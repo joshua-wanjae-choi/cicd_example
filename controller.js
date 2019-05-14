@@ -1,3 +1,3 @@
 module.exports = (name) => {
-	return name + ' 안녕';
+	return name + ' hello';
 }
