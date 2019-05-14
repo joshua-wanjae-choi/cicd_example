@@ -1,0 +1,14 @@
+language: node_js
+
+node_js: 10.15.3
+
+install:
+        - npm ci
+
+script:
+        - npm test
+
+after_success:
+        - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        - docker build -t mimi1942/cicd:${TRAVIS_COMMIT::7} .
+        - docker push mimi1942/cicd:${TRAVIS_COMMIT::7}
